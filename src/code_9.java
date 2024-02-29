@@ -1,8 +1,10 @@
+import java.util.Scanner;
+
 class Vehicle {
-    private final int id;
-    private final String manufacturer;
-    private final String model;
-    private final int yearOfManufacture;
+    private int id;
+    private String manufacturer;
+    private String model;
+    private int yearOfManufacture;
 
     public Vehicle(int id, String manufacturer, String model, int yearOfManufacture) {
         this.id = id;
@@ -20,8 +22,8 @@ class Vehicle {
 }
 
 class Car extends Vehicle {
-    private final int numberOfDoors;
-    private final String fuelType;
+    private int numberOfDoors;
+    private String fuelType;
 
     public Car(int id, String manufacturer, String model, int yearOfManufacture, int numberOfDoors, String fuelType) {
         super(id, manufacturer, model, yearOfManufacture);
@@ -37,45 +39,42 @@ class Car extends Vehicle {
     }
 }
 
-class Truck extends Vehicle {
-    private final int loadCapacity;
-    private final boolean trailerAttached;
-
-    public Truck(int id, String manufacturer, String model, int yearOfManufacture, int loadCapacity, boolean trailerAttached) {
-        super(id, manufacturer, model, yearOfManufacture);
-        this.loadCapacity = loadCapacity;
-        this.trailerAttached = trailerAttached;
-    }
-
-    @Override
-    public void printDetails() {
-        super.printDetails();
-        System.out.println("Load Capacity: " + loadCapacity + " Ton");
-        System.out.println("Trailer Attached: " + trailerAttached);
-    }
-}
-
-class Motorcycle extends Vehicle {
-    private final int engineCapacity;
-    private final boolean sportsBike;
-
-    public Motorcycle(int id, String manufacturer, String model, int yearOfManufacture, int engineCapacity, boolean sportsBike) {
-        super(id, manufacturer, model, yearOfManufacture);
-        this.engineCapacity = engineCapacity;
-        this.sportsBike = sportsBike;
-    }
-
-    @Override
-    public void printDetails() {
-        super.printDetails();
-        System.out.println("Engine Capacity: " + engineCapacity);
-        System.out.println("Sports Bike: " + sportsBike);
-    }
-}
-
 public class code_9 {
     public static void main(String[] args) {
-        Car car = new Car(4538, "Hyundai", "Creta", 2020, 4, "Diesel");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to Vehicle Management System!");
+
+        // Get vehicle details
+        System.out.println("\nEnter Vehicle Details:");
+        System.out.print("Enter Vehicle ID: ");
+        int id = scanner.nextInt();
+        scanner.nextLine(); // Consume newline character
+
+        System.out.print("Enter Manufacturer: ");
+        String manufacturer = scanner.nextLine();
+
+        System.out.print("Enter Model: ");
+        String model = scanner.nextLine();
+
+        System.out.print("Enter Year of Manufacture: ");
+        int yearOfManufacture = scanner.nextInt();
+
+        System.out.println("\nEnter Car Details:");
+        System.out.print("Enter Number of Doors: ");
+        int numberOfDoors = scanner.nextInt();
+
+        System.out.print("Enter Fuel Type: ");
+        scanner.nextLine(); // Consume newline character
+        String fuelType = scanner.nextLine();
+
+        // Create Car object
+        Car car = new Car(id, manufacturer, model, yearOfManufacture, numberOfDoors, fuelType);
+
+        // Print details
+        System.out.println("\nVehicle Details:");
         car.printDetails();
+
+        scanner.close();
     }
 }
